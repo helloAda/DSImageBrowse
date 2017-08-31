@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "B4FB7BCEE0E18EC5A5C2D7E3C2E8550507D7ECE0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "B4FB7BCEE0E18EC5A5C2D7E3C2E8550507D7ECE0" : 9223372036854775807,
+    "99B9F05A8332FF9E58E0D027B0AF95E4E509CD01" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3F5BA214-D3A1-4BB0-BCB8-BDA6410E360A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "B4FB7BCEE0E18EC5A5C2D7E3C2E8550507D7ECE0" : "DSImageBrowse\/",
+    "99B9F05A8332FF9E58E0D027B0AF95E4E509CD01" : "DSImageBrowse\/Demo\/DSImageBrowse\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "DSImageBrowse",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Demo\/DSImageBrowse.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/helloAda\/DSImageBrowse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "99B9F05A8332FF9E58E0D027B0AF95E4E509CD01"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/helloAda\/DSImageBrowse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B4FB7BCEE0E18EC5A5C2D7E3C2E8550507D7ECE0"
+    }
+  ]
+}
