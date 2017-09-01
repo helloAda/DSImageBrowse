@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		22BCFE449C600652A2CF54BF /* libPods-DSImageBrowse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BF62786ADA88A71FFE4B7CBD /* libPods-DSImageBrowse.a */; };
+		770794781F595704007DAB0B /* DTableDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 770794741F595704007DAB0B /* DTableDelegate.m */; };
+		770794791F595704007DAB0B /* DTableViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 770794771F595704007DAB0B /* DTableViewData.m */; };
+		7707947C1F595A19007DAB0B /* DSDefaultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7707947B1F595A19007DAB0B /* DSDefaultViewController.m */; };
 		7714884D1F5640F1002CC7FE /* NSString+DSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7714884C1F5640F1002CC7FE /* NSString+DSCategory.m */; };
 		7714888B1F56B643002CC7FE /* CALayer+DSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 771488841F56B643002CC7FE /* CALayer+DSCategory.m */; };
 		7714888C1F56B643002CC7FE /* UIImage+DSCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 771488861F56B643002CC7FE /* UIImage+DSCategory.m */; };
@@ -59,6 +62,13 @@
 
 /* Begin PBXFileReference section */
 		37E4CB2805E9D64DA5424C94 /* Pods-DSImageBrowse.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSImageBrowse.release.xcconfig"; path = "Pods/Target Support Files/Pods-DSImageBrowse/Pods-DSImageBrowse.release.xcconfig"; sourceTree = "<group>"; };
+		770794731F595704007DAB0B /* DTableDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTableDelegate.h; sourceTree = "<group>"; };
+		770794741F595704007DAB0B /* DTableDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTableDelegate.m; sourceTree = "<group>"; };
+		770794751F595704007DAB0B /* DTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTableViewCell.h; sourceTree = "<group>"; };
+		770794761F595704007DAB0B /* DTableViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DTableViewData.h; sourceTree = "<group>"; };
+		770794771F595704007DAB0B /* DTableViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DTableViewData.m; sourceTree = "<group>"; };
+		7707947A1F595A19007DAB0B /* DSDefaultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSDefaultViewController.h; sourceTree = "<group>"; };
+		7707947B1F595A19007DAB0B /* DSDefaultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSDefaultViewController.m; sourceTree = "<group>"; };
 		7714884B1F5640F1002CC7FE /* NSString+DSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+DSCategory.h"; sourceTree = "<group>"; };
 		7714884C1F5640F1002CC7FE /* NSString+DSCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+DSCategory.m"; sourceTree = "<group>"; };
 		771488831F56B643002CC7FE /* CALayer+DSCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+DSCategory.h"; sourceTree = "<group>"; };
@@ -146,6 +156,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		770794721F5956EE007DAB0B /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				770794731F595704007DAB0B /* DTableDelegate.h */,
+				770794741F595704007DAB0B /* DTableDelegate.m */,
+				770794751F595704007DAB0B /* DTableViewCell.h */,
+				770794761F595704007DAB0B /* DTableViewData.h */,
+				770794771F595704007DAB0B /* DTableViewData.m */,
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
 		771488751F56B5E5002CC7FE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +222,7 @@
 		775680811F482DED006F5568 /* DSImageBrowse */ = {
 			isa = PBXGroup;
 			children = (
+				770794721F5956EE007DAB0B /* TableView */,
 				7770D1061F4830600076C1C3 /* AppDelegate.h */,
 				7770D1071F4830600076C1C3 /* AppDelegate.m */,
 				771868D31F55675400A81403 /* DSDemoModel.h */,
@@ -210,6 +233,8 @@
 				771868D11F55666500A81403 /* DSDemoLayout.m */,
 				7770D10C1F48306C0076C1C3 /* ViewController.h */,
 				7770D10D1F48306C0076C1C3 /* ViewController.m */,
+				7707947A1F595A19007DAB0B /* DSDefaultViewController.h */,
+				7707947B1F595A19007DAB0B /* DSDefaultViewController.m */,
 				7770D1041F4830090076C1C3 /* Other */,
 				771488751F56B5E5002CC7FE /* Resources */,
 				7770D1031F482FF80076C1C3 /* ImageBrowse */,
@@ -500,7 +525,9 @@
 				775680841F482DED006F5568 /* main.m in Sources */,
 				7770D10E1F48306C0076C1C3 /* ViewController.m in Sources */,
 				7770D10B1F4830660076C1C3 /* DSImageDemoCell.m in Sources */,
+				7707947C1F595A19007DAB0B /* DSDefaultViewController.m in Sources */,
 				7714888B1F56B643002CC7FE /* CALayer+DSCategory.m in Sources */,
+				770794791F595704007DAB0B /* DTableViewData.m in Sources */,
 				7770D1281F4830770076C1C3 /* DSThumbnailView.m in Sources */,
 				7770D1221F4830770076C1C3 /* DSImageBrowseView.m in Sources */,
 				7770D1431F4830890076C1C3 /* UIView+Responder.m in Sources */,
@@ -509,6 +536,7 @@
 				7770D1271F4830770076C1C3 /* DSImageShowView.m in Sources */,
 				7770D1231F4830770076C1C3 /* DSImageLayout.m in Sources */,
 				7714888C1F56B643002CC7FE /* UIImage+DSCategory.m in Sources */,
+				770794781F595704007DAB0B /* DTableDelegate.m in Sources */,
 				771868D21F55666500A81403 /* DSDemoLayout.m in Sources */,
 				7714888E1F56B643002CC7FE /* UIView+DSCategory.m in Sources */,
 			);

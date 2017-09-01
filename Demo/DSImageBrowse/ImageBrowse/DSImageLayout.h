@@ -23,7 +23,7 @@
 - (instancetype)initWithImageData:(NSArray <DSImagesData *>*)imagedata;
 
 /**
- 调用该方法进行排版
+ 初始化后，一定要调用该方法进行排版
  如果需要修改默认参数，请初始化完修改参数，再调用该方法，否则还是使用默认数据。
  */
 - (void)layout;

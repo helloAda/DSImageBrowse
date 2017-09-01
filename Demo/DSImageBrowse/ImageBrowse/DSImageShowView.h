@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "DSImageScrollView.h"
 
+typedef NS_ENUM(NSInteger, DSImageShowType) {
+    DSImageShowTypeDefault,     ///  默认带page，最多9张。
+    DSImageShowTypeNoPage       ///  不带page，可以多张。
+};
+
+
 @interface DSImageShowView : UIView
 
 //数据
@@ -20,16 +26,22 @@
 //是否使用模糊背景 默认NO
 @property (nonatomic, assign)   BOOL blurEffectBackground;
 
-//是否裁剪缩略图 默认 YES
-@property (nonatomic, assign)   BOOL clipThumbnail;
+/**
+ 没有拿到图片坐标时，动画开始的位置和开始大小。
+ 默认((self.width - 100) / 2,self.height - 100) / 2,100,100);
+ */
+@property (nonatomic, assign)   CGRect fromRect;
 
+// 长按图片回调
+@property (nonatomic, copy) void (^longPressBlock)(UIImageView *imageView);
 /**
  初始化方法
- 
+
  @param items item数据
- @return 该实例
+ @param type 显示类型
+ @return DSImageShowView实例
  */
-- (instancetype)initWithItems:(NSArray <DSImageScrollItem *>*)items;
+- (instancetype)initWithItems:(NSArray <DSImageScrollItem *>*)items type:(DSImageShowType)type;
 
 - (instancetype)init UNAVAILABLE_ATTRIBUTE;
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
@@ -44,7 +56,6 @@
 // 会调用 [self dismissAnimated:YES completion:nil];
 - (void)dismiss;
 
-// 长按图片回调
-@property (nonatomic, copy) void (^longPressBlock)(UIImageView *imageView);
+
 
 @end

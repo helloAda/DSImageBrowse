@@ -29,7 +29,6 @@
 
     self.height = layout.cellHeight;
     _describeLabel.text = layout.model.describe;
-    
     _describeLabel.frame = CGRectMake(10, 12, kScreenWidth - 20, layout.descHeight);
     _imageBrowseView.frame = CGRectMake(10, 12 + layout.descHeight, 0, 0);
     _imageBrowseView.layout = layout.imageLayout;

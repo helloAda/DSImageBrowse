@@ -13,6 +13,16 @@
 @end
 @implementation DSImageScrollItem
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _isOriginalThumbView = YES;
+    }
+    return self;
+}
+
+
 - (UIImage *)thumbImage {
 
     if ([_thumbView respondsToSelector:@selector(image)]) {
