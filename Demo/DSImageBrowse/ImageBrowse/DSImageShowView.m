@@ -278,7 +278,7 @@
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     _hiddenView.hidden = NO;
-    DSImageScrollItem *item = _items[self.pager.currentPage];
+    DSImageScrollItem *item = _items[self.currentPage];
     _hiddenView = item.thumbView;
     _hiddenView.hidden = YES;
 }
@@ -549,4 +549,5 @@
         if(completion) completion();
     }];
 }
+
 @end

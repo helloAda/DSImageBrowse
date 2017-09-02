@@ -20,8 +20,8 @@
 @property (nonatomic, strong) UIView *thumbView;
 
 /**
- 是否是原始展示的视图，而不是重新从数据加载出来的 默认为YES。
- 如果只有单纯的数据，而没有保存缩略图View，就没法获取View的Rect，动画效果就会不同。
+ 默认为YES。(聊天模式下才去修改)
+ 如果只有单纯的数据，而没有保存缩略图View的Rect，动画效果就会不同。
  */
 @property (nonatomic, assign) BOOL isOriginalThumbView;
 

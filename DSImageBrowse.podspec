@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name          = 'DSImageBrowse'
-  s.version       = '1.0.0'
+  s.version       = '1.0.1'
   s.summary       = '简单的图片浏览控件'
   s.homepage      = 'https://github.com/helloAda/DSImageBrowse'
   s.license       = 'MIT'

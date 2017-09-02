@@ -24,11 +24,11 @@
 
 
 - (UIImage *)thumbImage {
-
     if ([_thumbView respondsToSelector:@selector(image)]) {
         return ((UIImageView *)_thumbView).image;
     }
-    return nil;
+    //在聊天模式下，由于item.thumbView只有当cell可见时才有赋值缩略图，其它的在还没有加载过大图的时候会出现灰色的一块。
+    return [UIImage imageNamed:@"default"];
 }
 
 - (BOOL)thumbClippedToTop {

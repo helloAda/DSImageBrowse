@@ -11,6 +11,7 @@
 #import "DTableDelegate.h"
 #import "DTableViewData.h"
 #import "DSDefaultViewController.h"
+#import "DSChatViewController.h"
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *data;
@@ -20,7 +21,7 @@
 @end
 
 @implementation ViewController
-#warning 还没完成
+
 - (void)viewDidLoad {
     self.title = @"图片浏览Demo";
     self.view.backgroundColor = [UIColor whiteColor];
@@ -43,12 +44,12 @@
                                   @{
                                       Title : @"九宫格模式",
                                       CellAction : @"onClick",
-                                      ShowSelectedStyle : @(YES),
+                                      isShowAccessory : @(YES),
                                       },
                                   @{
                                       Title : @"聊天浏览模式",
-                                      CellAction : @"onClick",
-                                      ShowSelectedStyle : @(YES),
+                                      CellAction : @"onChatClick",
+                                      isShowAccessory : @(YES),
                                       }
                                   ],
                           }
@@ -58,8 +59,15 @@
 
 
 - (void)onClick {
+    
     DSDefaultViewController *vc = [[DSDefaultViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)onChatClick {
+    
+    DSChatViewController *vc = [[DSChatViewController alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+    
+}
 @end

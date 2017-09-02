@@ -11,6 +11,7 @@
 #import "DSDemoLayout.h"
 
 @class DSImageDemoCell;
+
 @protocol DSImageBrowseCellDelegate <NSObject>
 
 - (void)didClick:(DSImageBrowseView *)imageView atIndex:(NSInteger)index;
@@ -20,7 +21,7 @@
 
 @interface DSImageDemoCell : UITableViewCell<DSImageBrowseDelegate>
 
-@property (nonatomic, strong) id<DSImageBrowseCellDelegate> delegate;
+@property (nonatomic, weak) id<DSImageBrowseCellDelegate> delegate;
 @property (nonatomic, strong) DSImageBrowseView *imageBrowseView;
 @property (nonatomic, strong) UILabel *describeLabel;
 

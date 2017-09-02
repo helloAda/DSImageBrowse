@@ -69,10 +69,10 @@
             for (int j = i; j < i + _random; j++) {
                 int thumbnailWidth = arc4random() % 114 + 100;
                 int thumbnailHeigth = arc4random() % 114 + 100;
-                //                int thumbnailWidth = 100;
-                //                int thumbnailHeigth = 300;
-                //                int random = arc4random() % 5 + 2;
-                int random = 3;
+//                int thumbnailWidth = 100;
+//                int thumbnailHeigth = 300;
+                int random = arc4random() % 5 + 1;
+//                int random = 3;
                 int largeWidth = thumbnailWidth * random;
                 int largeHeight = thumbnailHeigth * random;
                 NSString *thumbnail = [NSString stringWithFormat:@"https://unsplash.it/%d/%d?image=%d",thumbnailWidth,thumbnailHeigth,j];
@@ -135,7 +135,17 @@
 - (void)didClick:(DSImageBrowseView *)imageView atIndex:(NSInteger)index {
     
     NSLog(@"点击第%ld图片",index + 1);
+    [self present:imageView index:index];
+}
+
+//缩略图的时候长按
+- (void)longPress:(DSImageBrowseView *)imageView atIndex:(NSInteger)index {
     
+    NSLog(@"长按第%ld图片",index + 1);
+}
+
+
+- (void)present:(DSImageBrowseView *)imageView index:(NSInteger)index{
     UIView *fromView = nil;
     NSMutableArray *items = [NSMutableArray array];
     NSArray<DSImagesData *> *imagesData = imageView.layout.imagesData;
@@ -153,7 +163,6 @@
             fromView = imgView;
         }
     }
-    
     DSImageShowView *scrollView = [[DSImageShowView alloc] initWithItems:items type:DSImageShowTypeDefault];
     //    scrollView.blurEffectBackground = YES;
     [scrollView presentfromImageView:fromView toContainer:self.navigationController.view index:index animated:YES completion:nil];
@@ -166,14 +175,8 @@
         }
         //todo
     };
-}
 
-//缩略图的时候长按
-- (void)longPress:(DSImageBrowseView *)imageView atIndex:(NSInteger)index {
-    
-    NSLog(@"长按第%ld图片",index + 1);
 }
-
 
 /**
  如果要支持3DTouch 请在自己项目中对应实现以下方法
@@ -285,7 +288,6 @@
 - (void)previewingContext:(id <UIViewControllerPreviewing>)previewingContext commitViewController:(UIViewController *)viewControllerToCommit {
     DSThumbnailView *sourceView = (DSThumbnailView *)[previewingContext sourceView];
     DSImageBrowseView *imageBrowseView = (DSImageBrowseView *)sourceView.superview;
-    NSMutableArray *items = [NSMutableArray array];
     NSInteger index = 0;
     for (NSInteger i = 0 ; i < imageBrowseView.imageViews.count; i++ ) {
         if (sourceView == imageBrowseView.imageViews[i]) {
@@ -293,19 +295,7 @@
             break;
         }
     }
-    DSImageLayout *layout = imageBrowseView.layout;
-    for (NSUInteger i = 0,max = layout.imagesData.count; i < max ;i++) {
-        DSThumbnailView *imgView = sourceView;
-        DSImagesData *imageData = layout.imagesData[i];
-        DSImageScrollItem * item = [[DSImageScrollItem alloc] init];
-        item.thumbView = imgView;
-        item.largeImageURL = imageData.largeImage.url;
-        item.largeImageSize = CGSizeMake(imageData.largeImage.width, imageData.largeImage.height);
-        [items addObject:item];
-    }
-    DSImageShowView *scrollView = [[DSImageShowView alloc] initWithItems:items type:DSImageShowTypeDefault];
-    [scrollView presentfromImageView:sourceView toContainer:self.navigationController.view index:index animated:YES completion:nil];
-    
+    [self present:imageBrowseView index:index];
 }
 
 @end

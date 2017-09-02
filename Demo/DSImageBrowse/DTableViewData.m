@@ -61,6 +61,7 @@
         _cellClassName     = dict[CellClass];
         _cellActionName    = dict[CellAction];
         _rowHeight         = [dict[RowHeight] floatValue]? [dict[RowHeight] floatValue] : DefaultRowHeight;
+        _data              = dict[Data];
         _sepLeftEdge       = [dict[SeparatedLeftEdge] floatValue];
         _showAccessory     = [dict[ShowSelectedStyle] boolValue];
         _forbidSelected    = [dict[ForbidSelect] boolValue];

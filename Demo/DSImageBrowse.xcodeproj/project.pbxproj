@@ -24,6 +24,8 @@
 		7722BDC31F57A5560064FF53 /* image_gif@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7722BDBD1F57A5560064FF53 /* image_gif@3x.png */; };
 		7722BDC41F57A5560064FF53 /* image_longimage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7722BDBE1F57A5560064FF53 /* image_longimage@2x.png */; };
 		7722BDC51F57A5560064FF53 /* image_longimage@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7722BDBF1F57A5560064FF53 /* image_longimage@3x.png */; };
+		7724B6AA1F5A43BC00E3642C /* DSChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7724B6A91F5A43BC00E3642C /* DSChatViewController.m */; };
+		7724B6AF1F5A4F0100E3642C /* DSChatImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7724B6AE1F5A4F0100E3642C /* DSChatImageCell.m */; };
 		775680841F482DED006F5568 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 775680831F482DED006F5568 /* main.m */; };
 		7756808D1F482DED006F5568 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7756808B1F482DED006F5568 /* Main.storyboard */; };
 		775680921F482DED006F5568 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 775680901F482DED006F5568 /* LaunchScreen.storyboard */; };
@@ -89,6 +91,10 @@
 		7722BDBD1F57A5560064FF53 /* image_gif@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_gif@3x.png"; path = "DSImageBrowse/Resources/image_gif@3x.png"; sourceTree = SOURCE_ROOT; };
 		7722BDBE1F57A5560064FF53 /* image_longimage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_longimage@2x.png"; path = "DSImageBrowse/Resources/image_longimage@2x.png"; sourceTree = SOURCE_ROOT; };
 		7722BDBF1F57A5560064FF53 /* image_longimage@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "image_longimage@3x.png"; path = "DSImageBrowse/Resources/image_longimage@3x.png"; sourceTree = SOURCE_ROOT; };
+		7724B6A81F5A43BC00E3642C /* DSChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChatViewController.h; sourceTree = "<group>"; };
+		7724B6A91F5A43BC00E3642C /* DSChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChatViewController.m; sourceTree = "<group>"; };
+		7724B6AD1F5A4F0100E3642C /* DSChatImageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSChatImageCell.h; sourceTree = "<group>"; };
+		7724B6AE1F5A4F0100E3642C /* DSChatImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSChatImageCell.m; sourceTree = "<group>"; };
 		7756807F1F482DED006F5568 /* DSImageBrowse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DSImageBrowse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		775680831F482DED006F5568 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7756808C1F482DED006F5568 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -166,6 +172,7 @@
 				770794771F595704007DAB0B /* DTableViewData.m */,
 			);
 			name = TableView;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		771488751F56B5E5002CC7FE /* Resources */ = {
@@ -197,6 +204,32 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		7724B6AB1F5A443300E3642C /* 九宫格 */ = {
+			isa = PBXGroup;
+			children = (
+				771868D31F55675400A81403 /* DSDemoModel.h */,
+				771868D41F55675400A81403 /* DSDemoModel.m */,
+				7770D1091F4830660076C1C3 /* DSImageDemoCell.h */,
+				7770D10A1F4830660076C1C3 /* DSImageDemoCell.m */,
+				771868D01F55666500A81403 /* DSDemoLayout.h */,
+				771868D11F55666500A81403 /* DSDemoLayout.m */,
+				7707947A1F595A19007DAB0B /* DSDefaultViewController.h */,
+				7707947B1F595A19007DAB0B /* DSDefaultViewController.m */,
+			);
+			name = "九宫格";
+			sourceTree = "<group>";
+		};
+		7724B6AC1F5A444E00E3642C /* 聊天模式 */ = {
+			isa = PBXGroup;
+			children = (
+				7724B6A81F5A43BC00E3642C /* DSChatViewController.h */,
+				7724B6A91F5A43BC00E3642C /* DSChatViewController.m */,
+				7724B6AD1F5A4F0100E3642C /* DSChatImageCell.h */,
+				7724B6AE1F5A4F0100E3642C /* DSChatImageCell.m */,
+			);
+			name = "聊天模式";
+			sourceTree = "<group>";
+		};
 		775680761F482DED006F5568 = {
 			isa = PBXGroup;
 			children = (
@@ -222,19 +255,12 @@
 		775680811F482DED006F5568 /* DSImageBrowse */ = {
 			isa = PBXGroup;
 			children = (
-				770794721F5956EE007DAB0B /* TableView */,
 				7770D1061F4830600076C1C3 /* AppDelegate.h */,
 				7770D1071F4830600076C1C3 /* AppDelegate.m */,
-				771868D31F55675400A81403 /* DSDemoModel.h */,
-				771868D41F55675400A81403 /* DSDemoModel.m */,
-				7770D1091F4830660076C1C3 /* DSImageDemoCell.h */,
-				7770D10A1F4830660076C1C3 /* DSImageDemoCell.m */,
-				771868D01F55666500A81403 /* DSDemoLayout.h */,
-				771868D11F55666500A81403 /* DSDemoLayout.m */,
 				7770D10C1F48306C0076C1C3 /* ViewController.h */,
 				7770D10D1F48306C0076C1C3 /* ViewController.m */,
-				7707947A1F595A19007DAB0B /* DSDefaultViewController.h */,
-				7707947B1F595A19007DAB0B /* DSDefaultViewController.m */,
+				7724B6AB1F5A443300E3642C /* 九宫格 */,
+				7724B6AC1F5A444E00E3642C /* 聊天模式 */,
 				7770D1041F4830090076C1C3 /* Other */,
 				771488751F56B5E5002CC7FE /* Resources */,
 				7770D1031F482FF80076C1C3 /* ImageBrowse */,
@@ -305,6 +331,7 @@
 				7770D13E1F4830890076C1C3 /* UIView+Responder.m */,
 				7714884B1F5640F1002CC7FE /* NSString+DSCategory.h */,
 				7714884C1F5640F1002CC7FE /* NSString+DSCategory.m */,
+				770794721F5956EE007DAB0B /* TableView */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -516,6 +543,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7724B6AF1F5A4F0100E3642C /* DSChatImageCell.m in Sources */,
 				7770D1211F4830770076C1C3 /* DSForceTouchController.m in Sources */,
 				7714888D1F56B643002CC7FE /* UIScrollView+DSCategory.m in Sources */,
 				7770D1251F4830770076C1C3 /* DSImageScrollView.m in Sources */,
@@ -531,6 +559,7 @@
 				7770D1281F4830770076C1C3 /* DSThumbnailView.m in Sources */,
 				7770D1221F4830770076C1C3 /* DSImageBrowseView.m in Sources */,
 				7770D1431F4830890076C1C3 /* UIView+Responder.m in Sources */,
+				7724B6AA1F5A43BC00E3642C /* DSChatViewController.m in Sources */,
 				7770D1241F4830770076C1C3 /* DSImageScrollItem.m in Sources */,
 				7770D1261F4830770076C1C3 /* DSImagesData.m in Sources */,
 				7770D1271F4830770076C1C3 /* DSImageShowView.m in Sources */,

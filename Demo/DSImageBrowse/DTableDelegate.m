@@ -22,7 +22,7 @@ _Pragma("clang diagnostic pop") \
 
 #define SepViewTag 1000
 
-static NSString *DefaultTableCell = @"UITabelViewCell";
+static NSString *DefaultTableCell = @"UITableViewCell";
 
 @interface DTableDelegate ()
 
@@ -80,7 +80,7 @@ static NSString *DefaultTableCell = @"UITabelViewCell";
     }
     
     cell.accessoryType = tableRow.showAccessory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
-    cell.selectionStyle = tableRow.showAccessory ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
+    cell.selectionStyle = tableRow.showSelectedStyle ? UITableViewCellSelectionStyleNone : UITableViewCellSelectionStyleDefault;
     
     return cell;
 }
@@ -94,6 +94,7 @@ static NSString *DefaultTableCell = @"UITabelViewCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     DTableSection *tableSection = self.data[indexPath.section];
     DTableRow *tableRow = tableSection.rows[indexPath.row];
     if (!tableRow.forbidSelected) {
@@ -119,8 +120,9 @@ static NSString *DefaultTableCell = @"UITabelViewCell";
     if (tableRow.sepLeftEdge) {
         sepWidth = cell.width - tableRow.sepLeftEdge;
     }else {
+        DTableSection *section = self.data[indexPath.section];
         //最后一行不显示
-        if (indexPath.row == tableSection.rows.count - 1) {
+        if (indexPath.row == section.rows.count - 1) {
             sepWidth = 0;
         }else {
             sepWidth = cell.width - self.defaultSeparatorLeftEdge;
