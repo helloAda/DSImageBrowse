@@ -3,10 +3,10 @@
 ##### 一个简单的图片浏览控件，效果图如下。
 
 ### 默认模式下
- ![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/Demo/SnapShot/default.gif)
+ ![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/DSImageBrowse/SnapShot/default.gif)
 
 ### 聊天模式下
- ![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/Demo/SnapShot/chat.gif)
+ ![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/DSImageBrowse/SnapShot/chat.gif)
 
 ### 具体使用步骤(只显示这个控件的情况)：
 
@@ -17,7 +17,7 @@
 * 最后如果要实现点击、长按、ForceTouch的实现，请参考Demo中的ViewController.
 
 
-
+### 其他问题
 * 当前版本 1.0.1
  
 * 支持pod ,  pod 'DSImageBrowse'
