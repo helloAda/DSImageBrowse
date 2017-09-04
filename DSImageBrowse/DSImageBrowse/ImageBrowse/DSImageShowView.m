@@ -25,7 +25,6 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *scrollViews;
 @property (nonatomic, strong) UIPageControl *pager;
-@property (nonatomic, assign) NSInteger fromItemIndex;
 @property (nonatomic, assign) BOOL isPresented;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, assign) CGPoint panGestureBeginPoint;
@@ -40,8 +39,9 @@
     if (!type) type = DSImageShowTypeDefault;
     _type = type;
     _items = items.copy;
+    _scrollViews = [NSMutableArray array];
     _blurEffectBackground = NO;
-    
+
     self.backgroundColor = [UIColor clearColor];
     self.frame = [UIScreen mainScreen].bounds;
     self.clipsToBounds = YES;
@@ -60,18 +60,6 @@
     press.delegate = self;
     [self addGestureRecognizer:press];
     
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
-    pan.delegate = self;
-    [self addGestureRecognizer:pan];
-    _panGesture = pan;
-    _scrollViews = [NSMutableArray array];
-    
-    _blurBackground = [[UIImageView alloc] init];
-    _blurBackground.frame = self.bounds;
-    _blurBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    
-    _contentView = [[UIView alloc] initWithFrame:self.bounds];
-    _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     _scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(- kPadding / 2, 0, self.width + kPadding, self.height)];
     _scrollView.delegate = self;
@@ -84,10 +72,21 @@
     _scrollView.delaysContentTouches = NO;
     _scrollView.canCancelContentTouches = YES;
     
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
+    pan.delegate = self;
+    [self addGestureRecognizer:pan];
+    _panGesture = pan;
+    _blurBackground = [[UIImageView alloc] init];
+    _blurBackground.frame = self.bounds;
+    _blurBackground.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+
+    _contentView = [[UIView alloc] initWithFrame:self.bounds];
+    _contentView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    
     [self addSubview:_blurBackground];
     [self addSubview:_contentView];
     [_contentView addSubview:_scrollView];
-    
+
     if (type == DSImageShowTypeDefault) {
         _pager = [[UIPageControl alloc] init];
         _pager.hidesForSinglePage = YES;
@@ -103,18 +102,17 @@
 }
 
 - (void)presentfromImageView:(UIView *)fromView toContainer:(UIView *)toContainer index:(NSInteger)index animated:(BOOL)animated completion:(void (^)(void))completion {
-    if (!toContainer) return;
+    if (!toContainer || _type == DSImageShowtypeWebImage) return;
     _fromView = fromView;
     _toContainerView = toContainer;
     NSInteger page = 0;
-    if (_type == DSImageShowTypeNoPage) {
+    if (_type == DSImageShowTypeChat) {
         page = index;
         if (index < 0) page = 0;
     }else {
         page = index;
         if (index < 0 || index > 8) page = 0;
     }
-    _fromItemIndex = page;
     _hiddenView = fromView;
     _hiddenView.hidden = YES;
     if (_blurEffectBackground) {
@@ -133,12 +131,13 @@
     [_toContainerView addSubview:self];
     
     _scrollView.contentSize = CGSizeMake(_scrollView.width * self.items.count, _scrollView.height);
-    [_scrollView scrollRectToVisible:CGRectMake(_scrollView.width * _fromItemIndex, 0, _scrollView.width, _scrollView.height) animated:NO];
+    [_scrollView scrollRectToVisible:CGRectMake(_scrollView.width * page, 0, _scrollView.width, _scrollView.height) animated:NO];
     [self scrollViewDidScroll:_scrollView];
     
     [UIView setAnimationsEnabled:YES];
-    DSImageScrollView *scrollView = [self scrollViewForPage:self.currentPage];
-    DSImageScrollItem *item = _items[self.currentPage];
+    NSInteger currentPage = self.currentPage;
+    DSImageScrollView *scrollView = [self scrollViewForPage:currentPage];
+    DSImageScrollItem *item = _items[currentPage];
     
     if (!item.thumbClippedToTop) {
         NSString *imageKey = [[YYWebImageManager sharedManager] cacheKeyForURL:item.largeImageURL];
@@ -152,7 +151,7 @@
         [scrollView resizeSubviewSize];
     }
     
-    if (!item.isOriginalThumbView) {
+    if (!item.isVisibleThumbView) {
         if (CGRectEqualToRect(_fromRect,CGRectZero)) {
             _fromRect = CGRectMake((self.width - 100) / 2, (self.height - 100) / 2, 100, 100);
         }
@@ -195,20 +194,15 @@
 }
 
 - (void)dismissAnimated:(BOOL)animated completion:(void (^)(void))completion {
-    
+    if (_type == DSImageShowtypeWebImage) return;
     [UIView setAnimationsEnabled:YES];
     NSInteger currentPage = self.currentPage;
     DSImageScrollView *scrollView = [self scrollViewForPage:currentPage];
     DSImageScrollItem *item = _items[currentPage];
+    UIView *fromView = item.thumbView;
     
-    UIView *fromView = nil;
-    if (_fromItemIndex == currentPage) {
-        fromView = _fromView;
-    } else {
-        fromView = item.thumbView;
-    }
     [UIApplication sharedApplication].keyWindow.windowLevel = UIWindowLevelNormal;
-    if (!item.isOriginalThumbView) {
+    if (!item.isVisibleThumbView) {
         [self NoOriginalThumbViewAnimation:^{
             if (completion) completion();
         }];
@@ -237,7 +231,18 @@
 }
 
 - (void)dismiss {
-    [self dismissAnimated:YES completion:nil];
+    if (_type != DSImageShowtypeWebImage) {
+        [self dismissAnimated:YES completion:nil];
+    }else {
+        [self cancelAllImageLoad];
+        _isPresented = NO;
+        [UIApplication sharedApplication].keyWindow.windowLevel = UIWindowLevelNormal;
+        if ([self.viewController respondsToSelector:@selector(navigationController)]) {
+            [self.viewController.navigationController popViewControllerAnimated:YES];
+        }else {
+            [self.viewController dismissViewControllerAnimated:YES completion:nil];
+        }
+    }
 }
 
 - (void)cancelAllImageLoad {
@@ -361,6 +366,7 @@
 
 
 - (void)pan:(UIPanGestureRecognizer *)pan {
+    if (_type == DSImageShowtypeWebImage) return;
     NSInteger currentPage = self.currentPage;
     DSImageScrollView *scrollView = [self scrollViewForPage:currentPage];
     switch (pan.state) {
@@ -414,7 +420,7 @@
                 DSImageScrollItem *item = _items[currentPage];
                 UIView *fromView = item.thumbView;
                 [UIApplication sharedApplication].keyWindow.windowLevel = UIWindowLevelNormal;
-                if (!item.isOriginalThumbView) {
+                if (!item.isVisibleThumbView) {
                     [self NoOriginalThumbViewAnimation:nil];
                     return;
                 }
@@ -548,6 +554,39 @@
         [self cancelAllImageLoad];
         if(completion) completion();
     }];
+}
+
+
+
+#pragma mark --- ShowWebImage
+
+- (void)showWebImageIndex:(NSInteger)index {
+    
+    if (_type != DSImageShowtypeWebImage) return;
+    NSInteger page = index;
+    if (page < 0) page = 0;
+    self.size = [UIScreen mainScreen].bounds.size;
+    _scrollView.contentSize = CGSizeMake(_scrollView.width * self.items.count, _scrollView.height);
+    [_scrollView scrollRectToVisible:CGRectMake(_scrollView.width * page, 0, _scrollView.width, _scrollView.height) animated:NO];
+    [self scrollViewDidScroll:_scrollView];
+    
+    NSInteger currentpage = self.currentPage;
+    DSImageScrollView *scrollView = [self scrollViewForPage:currentpage];
+    DSImageScrollItem *item = _items[currentpage];
+
+    NSString *imageKey = [[YYWebImageManager sharedManager] cacheKeyForURL:item.largeImageURL];
+    if ([[YYWebImageManager sharedManager].cache getImageForKey:imageKey withType:YYImageCacheTypeMemory]) {
+        scrollView.item = item;
+    }
+    if (!scrollView.item) {
+        scrollView.imageView.image = item.thumbImage;
+        [scrollView resizeSubviewSize];
+    }
+    
+    [UIApplication sharedApplication].keyWindow.windowLevel = UIWindowLevelStatusBar;
+    _isPresented = YES;
+    _scrollView.userInteractionEnabled = YES;
+    [self scrollViewDidScroll:_scrollView];
 }
 
 @end

@@ -16,4 +16,4 @@
 #import "DSImageShowView.h"
 #import "DSThumbnailView.h"
 #import "DSForceTouchController.h"
-
+#import "DSWebImageViewController.h"

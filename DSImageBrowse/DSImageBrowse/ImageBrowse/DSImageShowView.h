@@ -11,7 +11,8 @@
 
 typedef NS_ENUM(NSInteger, DSImageShowType) {
     DSImageShowTypeDefault,     ///  默认带page，最多9张。
-    DSImageShowTypeNoPage       ///  不带page，可以多张。
+    DSImageShowTypeChat,        ///  默认不带page，可以多张，用于聊天内容图片显示
+    DSImageShowtypeWebImage     ///  用于显示网页中的图片
 };
 
 
@@ -56,6 +57,7 @@ typedef NS_ENUM(NSInteger, DSImageShowType) {
 // 会调用 [self dismissAnimated:YES completion:nil];
 - (void)dismiss;
 
-
+// 只有在type == DSImageShowtypeWebImage 情况下才调用，否则无效。
+- (void)showWebImageIndex:(NSInteger)index;
 
 @end

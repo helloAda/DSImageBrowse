@@ -43,6 +43,7 @@
 		7770D1271F4830770076C1C3 /* DSImageShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770D11E1F4830770076C1C3 /* DSImageShowView.m */; };
 		7770D1281F4830770076C1C3 /* DSThumbnailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770D1201F4830770076C1C3 /* DSThumbnailView.m */; };
 		7770D1431F4830890076C1C3 /* UIView+Responder.m in Sources */ = {isa = PBXBuildFile; fileRef = 7770D13E1F4830890076C1C3 /* UIView+Responder.m */; };
+		7775F6B81F5DA3FB00950BBC /* DSWebImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7775F6B71F5DA3FB00950BBC /* DSWebImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,8 @@
 		7770D1201F4830770076C1C3 /* DSThumbnailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSThumbnailView.m; sourceTree = "<group>"; };
 		7770D13D1F4830890076C1C3 /* UIView+Responder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Responder.h"; sourceTree = "<group>"; };
 		7770D13E1F4830890076C1C3 /* UIView+Responder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Responder.m"; sourceTree = "<group>"; };
+		7775F6B61F5DA3FB00950BBC /* DSWebImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSWebImageViewController.h; sourceTree = "<group>"; };
+		7775F6B71F5DA3FB00950BBC /* DSWebImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSWebImageViewController.m; sourceTree = "<group>"; };
 		AAD2C3BF9AC05C19DBB30670 /* Pods-DSImageBrowse.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DSImageBrowse.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DSImageBrowse/Pods-DSImageBrowse.debug.xcconfig"; sourceTree = "<group>"; };
 		BF62786ADA88A71FFE4B7CBD /* libPods-DSImageBrowse.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DSImageBrowse.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -204,7 +207,7 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
-		7724B6AB1F5A443300E3642C /* 九宫格 */ = {
+		7724B6AB1F5A443300E3642C /* 九宫格模式 */ = {
 			isa = PBXGroup;
 			children = (
 				771868D31F55675400A81403 /* DSDemoModel.h */,
@@ -216,7 +219,7 @@
 				7707947A1F595A19007DAB0B /* DSDefaultViewController.h */,
 				7707947B1F595A19007DAB0B /* DSDefaultViewController.m */,
 			);
-			name = "九宫格";
+			name = "九宫格模式";
 			sourceTree = "<group>";
 		};
 		7724B6AC1F5A444E00E3642C /* 聊天模式 */ = {
@@ -259,7 +262,7 @@
 				7770D1071F4830600076C1C3 /* AppDelegate.m */,
 				7770D10C1F48306C0076C1C3 /* ViewController.h */,
 				7770D10D1F48306C0076C1C3 /* ViewController.m */,
-				7724B6AB1F5A443300E3642C /* 九宫格 */,
+				7724B6AB1F5A443300E3642C /* 九宫格模式 */,
 				7724B6AC1F5A444E00E3642C /* 聊天模式 */,
 				7770D1041F4830090076C1C3 /* Other */,
 				771488751F56B5E5002CC7FE /* Resources */,
@@ -320,6 +323,8 @@
 				7770D11E1F4830770076C1C3 /* DSImageShowView.m */,
 				7770D11F1F4830770076C1C3 /* DSThumbnailView.h */,
 				7770D1201F4830770076C1C3 /* DSThumbnailView.m */,
+				7775F6B61F5DA3FB00950BBC /* DSWebImageViewController.h */,
+				7775F6B71F5DA3FB00950BBC /* DSWebImageViewController.m */,
 			);
 			path = ImageBrowse;
 			sourceTree = "<group>";
@@ -557,6 +562,7 @@
 				7714888B1F56B643002CC7FE /* CALayer+DSCategory.m in Sources */,
 				770794791F595704007DAB0B /* DTableViewData.m in Sources */,
 				7770D1281F4830770076C1C3 /* DSThumbnailView.m in Sources */,
+				7775F6B81F5DA3FB00950BBC /* DSWebImageViewController.m in Sources */,
 				7770D1221F4830770076C1C3 /* DSImageBrowseView.m in Sources */,
 				7770D1431F4830890076C1C3 /* UIView+Responder.m in Sources */,
 				7724B6AA1F5A43BC00E3642C /* DSChatViewController.m in Sources */,

@@ -171,6 +171,7 @@
  这下面主要是为了处理长图滑动的时候手势冲突。解决方法很粗糙的。。。没有像微信那样在滑动到顶部后 手势切换了。(请教！！)
  */
 - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    if (_item.cancelPan) return YES;
     if (_panGesture) {
         _panGesture = NO;
         return NO;
@@ -179,11 +180,13 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (_item.cancelPan) return;
     UITouch *touch = [touches anyObject];
     _startPoint = [touch locationInView:self];
 }
 
 - (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    if (_item.cancelPan) return;
     UITouch *touch = [touches anyObject];
     _currentPoint = [touch locationInView:self];
     if (_startPoint.y - _currentPoint.y < 0 && self.contentOffset.y < 10) {

@@ -20,10 +20,13 @@
 @property (nonatomic, strong) UIView *thumbView;
 
 /**
- 默认为YES。(聊天模式下才去修改)
- 如果只有单纯的数据，而没有保存缩略图View的Rect，动画效果就会不同。
+ 默认为YES.(聊天模式下才去修改)
+ 当前图片的缩略图不可见的话，动画效果就会不同。
  */
-@property (nonatomic, assign) BOOL isOriginalThumbView;
+@property (nonatomic, assign) BOOL isVisibleThumbView;
+
+//默认为NO.(请在网页模式下才设置为YES)
+@property (nonatomic, assign) BOOL cancelPan;
 
 //大图尺寸，若无则传0
 @property (nonatomic, assign) CGSize largeImageSize;

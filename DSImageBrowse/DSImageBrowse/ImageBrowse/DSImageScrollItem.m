@@ -17,7 +17,7 @@
 {
     self = [super init];
     if (self) {
-        _isOriginalThumbView = YES;
+        _isVisibleThumbView = YES;
     }
     return self;
 }

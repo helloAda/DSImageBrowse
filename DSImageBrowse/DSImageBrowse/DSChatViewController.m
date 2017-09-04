@@ -147,7 +147,7 @@
         DSImageLayout *imageLayout = _layouts[i];
         DSImagesData * imageData = imageLayout.imagesData[0];
         DSImageScrollItem * item = [[DSImageScrollItem alloc] init];
-        item.isOriginalThumbView = NO;
+        item.isVisibleThumbView = NO;
         item.largeImageURL = imageData.largeImage.url;
         item.largeImageSize = CGSizeMake(imageData.largeImage.width, imageData.largeImage.height);
         for (NSIndexPath *indexPath in visibleCells) {
@@ -155,7 +155,7 @@
                 DSChatImageCell *cell = (DSChatImageCell *)[self.tableView cellForRowAtIndexPath:indexPath];
                 DSThumbnailView *thumbnail = ((DSImageBrowseView *)cell.subviews[1]).imageViews[0];
                 item.thumbView = thumbnail;
-                item.isOriginalThumbView = YES;
+                item.isVisibleThumbView = YES;
             }
         }
         [items addObject:item];
@@ -164,7 +164,7 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:(DSChatImageCell *)imageView.superview];
     NSInteger currentIndex = indexPath.row;
     UIView *fromView = ((DSImageScrollItem *)items[currentIndex]).thumbView;
-    DSImageShowView *scrollView = [[DSImageShowView alloc] initWithItems:items type:DSImageShowTypeNoPage];
+    DSImageShowView *scrollView = [[DSImageShowView alloc] initWithItems:items type:DSImageShowTypeChat];
     [scrollView presentfromImageView:fromView toContainer:self.navigationController.view index:currentIndex animated:YES completion:nil];
     //长按
     scrollView.longPressBlock = ^(UIImageView *imageView) {

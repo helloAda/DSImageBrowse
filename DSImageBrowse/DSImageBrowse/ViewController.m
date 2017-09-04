@@ -12,6 +12,7 @@
 #import "DTableViewData.h"
 #import "DSDefaultViewController.h"
 #import "DSChatViewController.h"
+#import "DSWebImageViewController.h"
 @interface ViewController ()
 
 @property (nonatomic, strong) NSArray *data;
@@ -50,6 +51,11 @@
                                       Title : @"聊天浏览模式",
                                       CellAction : @"onChatClick",
                                       isShowAccessory : @(YES),
+                                      },
+                                  @{
+                                      Title : @"网页模式",
+                                      CellAction : @"onWebClick",
+                                      isShowAccessory : @(YES),
                                       }
                                   ],
                           }
@@ -69,5 +75,17 @@
     DSChatViewController *vc = [[DSChatViewController alloc] init];
     [self.navigationController pushViewController:vc animated:YES];
     
+}
+
+- (void)onWebClick {
+    NSMutableArray *images = [NSMutableArray array];
+    for (int i = 0; i < 20; i++) {
+        int Width = arc4random() % 114 + 1000;
+        int Heigth = arc4random() % 114 + 1000;
+        NSString *url = [NSString stringWithFormat:@"https://unsplash.it/%d/%d?image=%d",Width,Heigth,arc4random() % 100];
+        [images addObject:url];
+    }
+    DSWebImageViewController *vc = [[DSWebImageViewController alloc] initWithImages:images currentImage:images[arc4random() % 20]];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
