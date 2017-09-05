@@ -2,16 +2,16 @@
 
 ##### 一个简单的图片浏览控件。
 
-#效果图
+# 效果图
 ### 默认模式
  ![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/DSImageBrowse/SnapShot/default.gif)
 
 ### 聊天模式
  ![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/DSImageBrowse/SnapShot/chat.gif)
 ### 网页图片
-![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/DSImageBrowse/SnapShot/web.gif)
+ ![效果图](https://github.com/helloAda/DSImageBrowse/blob/master/DSImageBrowse/SnapShot/web.gif)
 
-#使用方法
+# 使用方法
 
 1. 先将你的图片数据构成一个个DSImagesData对象，放入数组
 2. 利用DSImagesData对象数组初始化DSImageLayout对象，调用layout方法完成排版
@@ -59,7 +59,7 @@ DSImageShowView *scrollView = [[DSImageShowView alloc] initWithItems:items type:
 */
 DSWebImageViewController *vc = [[DSWebImageViewController alloc] initWithImages:images currentImage:images[i]];
 [self.navigationController pushViewController:vc animated:YES];
-``
+```
 
 
 
@@ -74,4 +74,4 @@ DSWebImageViewController *vc = [[DSWebImageViewController alloc] initWithImages:
 * 觉得有帮助请点个star吧，我会持续跟进。
 
 # 相关链接
-[iOS图片浏览库](http://www.jianshu.com/p/6a5da7669755) 
+ [iOS图片浏览库](http://www.jianshu.com/p/6a5da7669755) 
