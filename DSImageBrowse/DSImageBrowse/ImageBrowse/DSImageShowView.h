@@ -48,7 +48,15 @@ typedef NS_ENUM(NSInteger, DSImageShowType) {
 - (instancetype)initWithFrame:(CGRect)frame UNAVAILABLE_ATTRIBUTE;
 + (instancetype)new UNAVAILABLE_ATTRIBUTE;
 
-// 视图展示
+/**
+ 视图展示
+ 
+ @param fromView 缩略图View 可为nil,
+ @param toContainer 推出的视图容器View
+ @param index 当前显示的图片在所有图片中的index
+ @param animated 是否需要动画
+ @param completion 回调
+ */
 - (void)presentfromImageView:(UIView *)fromView toContainer:(UIView *)toContainer index:(NSInteger)index animated:(BOOL)animated completion:(void (^)(void))completion;
 
 // 视图消失

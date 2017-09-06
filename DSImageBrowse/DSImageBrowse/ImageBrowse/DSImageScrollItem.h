@@ -20,8 +20,7 @@
 @property (nonatomic, strong) UIView *thumbView;
 
 /**
- 默认为YES.(聊天模式下才去修改)
- 当前图片的缩略图不可见的话，动画效果就会不同。
+ //当前图片的缩略图View在界面中不可见的话，请设置为NO。动画效果会不同。
  */
 @property (nonatomic, assign) BOOL isVisibleThumbView;
 
